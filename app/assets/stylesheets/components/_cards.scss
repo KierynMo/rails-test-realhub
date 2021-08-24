@@ -1,0 +1,35 @@
+.card {
+  margin: 25px 200px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c6c7c8;
+}
+
+.card-header {
+  border-bottom: 1px solid #c6c7c8;
+  padding-left: 10px;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
+
+.right-side-card-body {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.separator {
+  margin: 0px 5px;
+}
+
+.downloadBtn {
+  color: #c3c5c6;
+  text-decoration: none;
+
+}
+
+
