@@ -1,0 +1,46 @@
+<div class='container'>
+  <div class='navbar'>
+    <h2 class="title">Orders</h2>
+  </div>
+
+  <% @orders_hash.each do |order| %>
+    <div class='card'>
+      <div class='card-header'>
+        <p><%= "#{order[1][:agency_name]} - #{order[1][:address]}"%></p>
+      </div>
+      <% order[1][:items].each do |item| %>
+        <div class='card-body'>
+          <p><%= "#{item[:quantity]} x #{item[:name]}/#{item[:finish]}" %></p>
+          <div class ='right-side-card-body'>
+            <%= link_to "Download Artwork", artwork_path(item[:id]), class: "right-side-items downloadBtn", id:"artwork-btn"%>
+            <p class='separator'> | </p>
+            <p class="status-btn" data-item=<%= "#{item[:id]}" %>>Change Status</p>
+            <p class='separator'> | </p>
+            <div <%= raw "id='#{item[:status]}-color-parent'" %>>
+              <p <%= raw "id='#{item[:status]}-color'" %>><%= "#{item[:status]}" %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="modal">
+    <div class='modal-content'>
+      <div class='navbar'>
+        <h3>Update status</h3>
+      </div>
+      <div class="modal-body">
+        <form>
+          <% @status_options.each do |status| %>
+            <div class="status-option">
+              <input type='radio' <%= raw "id='#{status.last}'" %> name="result" <%= raw "value='#{status.last}'" %> checked>
+              <label <%= raw "for='#{status.last}'" %>><%= status.last %></label>
+            </div>
+          <% end %>
+          <input type="submit" id='save-button'>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
